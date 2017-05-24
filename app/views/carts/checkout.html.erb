@@ -1,0 +1,21 @@
+<h2>結帳</h2>
+
+<%= render "cart", cart: @cart %>
+
+<%= simple_form_for @order do |f| %>
+	<%= f.input :recipient %>
+	<%= f.input :tel %>
+	<%= f.input :email %>
+	<div id="payment-form"></div>
+	<%= f.submit %>
+<% end %>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.32.0.min.js"></script>
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var clientToken = "<%= @token %>";
+
+braintree.setup(clientToken, "dropin", { container: "payment-form" });
+</script>

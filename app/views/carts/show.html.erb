@@ -1,0 +1,9 @@
+<h2>購物車</h2>
+
+<%= link_to "清空購物車", cart_path ,method: "delete", data: { confirm: "確定清空?" }, class: "btn btn-default btn-success"%>
+
+<%= render "cart", cart: @cart %>
+
+
+<%= link_to '繼續選購', products_path, class: "btn btn-default btn-primary" %>
+<%= link_to '結帳', checkout_cart_path, class: "btn btn-default btn-danger" unless @cart.empty? %>
